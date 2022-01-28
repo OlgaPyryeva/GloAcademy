@@ -32,3 +32,6 @@ let workPrice =
   "рублей/ долларов/ гривен/ юани";
 console.log(screensPrice);
 console.log(workPrice);
+
+screens = screens.toLowerCase();
+console.log(screens.split(", "));
