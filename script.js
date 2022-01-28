@@ -11,3 +11,7 @@ screenPrice = 42;
 rollback = 56;
 fullPrice = 2500;
 adaptive = true;
+
+console.log(typeof title);
+console.log(typeof fullPrice);
+console.log(typeof adaptive);
