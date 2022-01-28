@@ -17,3 +17,18 @@ console.log(typeof fullPrice);
 console.log(typeof adaptive);
 
 console.log(screens.length);
+
+let screensPrice =
+  "Стоимость верстки экранов" +
+  " " +
+  screenPrice +
+  " " +
+  "рублей/ долларов/ гривен/ юани";
+let workPrice =
+  "Стоимость разработки сайта" +
+  " " +
+  fullPrice +
+  " " +
+  "рублей/ долларов/ гривен/ юани";
+console.log(screensPrice);
+console.log(workPrice);
