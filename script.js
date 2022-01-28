@@ -35,3 +35,7 @@ console.log(workPrice);
 
 screens = screens.toLowerCase();
 console.log(screens.split(", "));
+
+let workPercentage =
+  "Процент отката посреднику за работу" + " " + fullPrice * (rollback / 100);
+console.log(workPercentage);
