@@ -1,3 +1,5 @@
+"use strict";
+
 const title = "My first project";
 const screens = "Простые, Сложные, Интерактивные";
 const screenPrice = 42;
