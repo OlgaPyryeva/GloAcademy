@@ -27,8 +27,9 @@ const getTitle = function (str) {
   for (let i = 0; i < str.length; ) {
     if (str[i] == " ") {
       i++;
+    } else {
+      return str[i].toUpperCase() + str.slice(i + 1).toLowerCase();
     }
-    return str[i].toUpperCase() + str.slice(i + 1).toLowerCase();
   }
 };
 
@@ -60,7 +61,7 @@ servicePercentPrice = getServicePercentPrices(
 );
 getTitle(title);
 
-showTypeOf(title);
+showTypeOf(getTitle(title));
 showTypeOf(fullPrice);
 showTypeOf(adaptive);
 
