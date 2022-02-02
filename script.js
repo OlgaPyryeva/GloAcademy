@@ -1,45 +1,70 @@
 "use strict";
-
-let title = prompt("Как называется проект?");
-const screens = prompt("Какие типы экранов нужно разработать?");
-const screenPrice = +prompt("Сколько будет стоить данная работа?");
-const rollback = 56;
-const service1 = prompt("Какой дополнительный тип услуги нужен?");
-const servicePrice1 = +prompt("Сколько это будет стоить?");
-const service2 = prompt("Какой дополнительный тип услуги нужен?");
-const servicePrice2 = +prompt("Сколько это будет стоить?");
-let fullPrice = screenPrice + servicePrice1 + servicePrice2;
-const adaptive = !!Number(
-  prompt("Нужен ли адаптив на сайте?", "ведите 1 - если нужен и 0 - если нет")
-);
-let servicePercentPrice = Math.ceil(fullPrice - fullPrice * (rollback / 100));
+let title;
+let screens;
+let screenPrice;
+let adaptive;
+let rollback = 56;
 let allServicePrices;
+let fullPrice;
+let servicePercentPrice;
+let service1;
+let service2;
 
-const getAllServicePrices = function (priceOfServise1, priceOfServise2) {
-  return priceOfServise1 + priceOfServise2;
+const isNumber = function (num) {
+  return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
-function getFullPrice(priceOfScreens, priceOfAllService) {
-  return priceOfScreens + priceOfAllService;
-}
+// const asking = function () {
+//   title = prompt("Как называется проект?", "калькулятор верстки");
+//   screens = prompt("Какие типы экранов нужно разработать?", "Простые, Cложные");
+//   while (!isNumber(screenPrice)) {
+//     screenPrice = prompt("Сколько будет стоить данная работа?");
+//   }
+//   adaptive = confirm("Нужен ли адаптив на сайте?");
+// };
+const asking = function () {
+  title = prompt("Как называется проект?", "калькулятор верстки");
+  screens = prompt("Какие типы экранов нужно разработать?", "Простые, Cложные");
+  do {
+    screenPrice = +prompt("Сколько будет стоить данная работа?");
+  } while (!isNumber(screenPrice));
+  adaptive = confirm("Нужен ли адаптив на сайте?");
+};
 
-const getTitle = function (str) {
-  for (let i = 0; i < str.length; ) {
-    if (str[i] == " ") {
-      i++;
-    } else {
-      return str[i].toUpperCase() + str.slice(i + 1).toLowerCase();
+const getAllServicePrices = function () {
+  let sum = 0;
+
+  for (let i = 0; i < 2; i++) {
+    if (i === 0) {
+      service1 = prompt("Какой дополнительный тип услуги нужен?");
+    } else if (i === 1) {
+      service2 = prompt("Какой дополнительный тип услуги нужен?");
     }
+    do {
+      sum += +prompt("Сколько это будет стоить?");
+    } while (!isNumber(sum));
   }
+  return sum;
 };
-
-function getServicePercentPrices(foolCoast, supplierPercentage) {
-  return foolCoast - foolCoast * (supplierPercentage / 100);
-}
 
 const showTypeOf = function (variable) {
   console.log(variable, typeof variable);
 };
+
+function getFullPrice() {
+  return screenPrice + allServicePrices;
+}
+
+const getServicePercentPrices = function () {
+  return fullPrice - fullPrice * (rollback / 100);
+};
+
+const getTitle = function () {
+  return (
+    title.trim()[0].toUpperCase() + title.trim().substring(1).toLowerCase()
+  );
+};
+
 const getRollbackMessage = function (price) {
   if (price > 30000) {
     return "Даем скидку в 10%";
@@ -52,19 +77,24 @@ const getRollbackMessage = function (price) {
   }
 };
 
-allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
-fullPrice = getFullPrice(screenPrice, allServicePrices);
+asking();
+allServicePrices = getAllServicePrices();
+fullPrice = getFullPrice();
+servicePercentPrice = getServicePercentPrices();
+title = getTitle();
 
-servicePercentPrice = getServicePercentPrices(
-  getFullPrice(screenPrice, allServicePrices),
-  rollback
-);
-getTitle(title);
-
-showTypeOf(getTitle(title));
+showTypeOf(title);
 showTypeOf(fullPrice);
 showTypeOf(adaptive);
+showTypeOf(screens);
+showTypeOf(screenPrice);
+showTypeOf(rollback);
+showTypeOf(allServicePrices);
+showTypeOf(servicePercentPrice);
+showTypeOf(service1);
+showTypeOf(service2);
 
+console.log("allServicePrices", allServicePrices);
 console.log(getRollbackMessage(fullPrice));
 console.log(screens.toLowerCase().split(", "));
 console.log(
