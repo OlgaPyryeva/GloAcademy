@@ -14,14 +14,6 @@ const isNumber = function (num) {
   return !isNaN(parseFloat(num)) && isFinite(num);
 };
 
-// const asking = function () {
-//   title = prompt("Как называется проект?", "калькулятор верстки");
-//   screens = prompt("Какие типы экранов нужно разработать?", "Простые, Cложные");
-//   while (!isNumber(screenPrice)) {
-//     screenPrice = prompt("Сколько будет стоить данная работа?");
-//   }
-//   adaptive = confirm("Нужен ли адаптив на сайте?");
-// };
 const asking = function () {
   title = prompt("Как называется проект?", "калькулятор верстки");
   screens = prompt("Какие типы экранов нужно разработать?", "Простые, Cложные");
@@ -33,18 +25,22 @@ const asking = function () {
 
 const getAllServicePrices = function () {
   let sum = 0;
+  let sum1 = 0;
 
   for (let i = 0; i < 2; i++) {
     if (i === 0) {
       service1 = prompt("Какой дополнительный тип услуги нужен?");
+      do {
+        sum = +prompt("Сколько это будет стоить?");
+      } while (!isNumber(sum));
     } else if (i === 1) {
       service2 = prompt("Какой дополнительный тип услуги нужен?");
+      do {
+        sum1 = +prompt("Сколько это будет стоить?");
+      } while (!isNumber(sum1));
     }
-    do {
-      sum += +prompt("Сколько это будет стоить?");
-    } while (!isNumber(sum));
   }
-  return sum;
+  return sum + sum1;
 };
 
 const showTypeOf = function (variable) {
