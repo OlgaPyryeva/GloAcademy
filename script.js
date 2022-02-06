@@ -68,7 +68,9 @@ const appData = {
     }
   },
   logger: (str) => {
-    console.log(str);
+    for (let key in appData) {
+      console.log("Ключ:" + key);
+    }
   },
   start: () => {
     appData.asking();
@@ -76,13 +78,7 @@ const appData = {
     appData.fullPrice = appData.getFullPrice();
     appData.servicePercentPrice = appData.getServicePercentPrices();
     appData.title = appData.getTitle();
-    for (let key in appData) {
-      if (typeof appData[key] === "function") {
-        appData.logger("Ключ:" + key);
-      } else {
-        appData.logger("Ключ:" + key + "," + "значение:" + appData[key]);
-      }
-    }
+    appData.logger();
   },
 };
 
