@@ -9,7 +9,7 @@ const appData = {
   allServicePrices: 0,
   fullPrice: 0,
   servicePercentPrice: 0,
-  services: {},
+  services: [],
 
   asking: function () {
     do {
@@ -33,6 +33,7 @@ const appData = {
     for (let i = 0; i < 2; i++) {
       let name = "";
       let price = 0;
+
       do {
         name = prompt("Какой дополнительный тип услуги нужен?");
       } while (appData.isNumber(name));
@@ -40,16 +41,21 @@ const appData = {
       do {
         price = +prompt("Сколько это будет стоить?");
       } while (!appData.isNumber(price));
-      appData.services[name] = +price;
+      appData.services.push({ id: i, name: name, price: price });
     }
     appData.adaptive = confirm("Нужен ли адаптив на сайте?");
   },
   addPrices: function () {
-    for (let screen of appData.screens) {
-      appData.screenPrice += +screen.price;
-    }
-    for (let key in appData.services) {
-      appData.allServicePrices += appData.services[key];
+    // for (let screen of appData.screens) {
+    //   appData.screenPrice += +screen.price;
+    // }
+    appData.screenPrice = appData.screens.reduce(function (screenPrice, price) {
+      return screenPrice + appData.screens.price;
+    }, 0);
+    // что-то не работает
+
+    for (let service of appData.services) {
+      appData.allServicePrices += +service.price;
     }
   },
   isNumber: function (num) {
@@ -84,6 +90,7 @@ const appData = {
     console.log(appData.fullPrice);
     console.log(appData.servicePercentPrice);
     console.log(appData.screens);
+    console.log(appData.services);
   },
   start: () => {
     appData.asking();
