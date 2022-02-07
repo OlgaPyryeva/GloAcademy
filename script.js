@@ -12,11 +12,17 @@ const appData = {
   services: {},
 
   asking: function () {
-    appData.title = prompt("Как называется проект?");
+    do {
+      appData.title = prompt("Как называется проект?");
+    } while (appData.isNumber(appData.title));
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какие типы экранов нужно разработать?");
+      let name = "";
       let price = 0;
+
+      do {
+        name = prompt("Какие типы экранов нужно разработать?");
+      } while (appData.isNumber(name));
 
       do {
         price = +prompt("Сколько будет стоить данная работа?");
@@ -25,8 +31,12 @@ const appData = {
     }
 
     for (let i = 0; i < 2; i++) {
-      let name = prompt("Какой дополнительный тип услуги нужен?");
+      let name = "";
       let price = 0;
+      do {
+        name = prompt("Какой дополнительный тип услуги нужен?");
+      } while (appData.isNumber(name));
+
       do {
         price = +prompt("Сколько это будет стоить?");
       } while (!appData.isNumber(price));
