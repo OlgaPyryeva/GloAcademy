@@ -1,23 +1,23 @@
 "use strict";
 
-let htmlTitle = document.getElementsByTagName("h1")[0];
+const htmlTitle = document.getElementsByTagName("h1")[0];
 
-let countBtn = document.getElementsByClassName("handler_btn")[0];
-let resetBtn = document.getElementsByClassName("handler_btn")[1];
+const countBtn = document.getElementsByClassName("handler_btn")[0];
+const resetBtn = document.getElementsByClassName("handler_btn")[1];
 
-let plusBtn = document.querySelector(".screen-btn");
+const plusBtn = document.querySelector(".screen-btn");
 
-let percentElem = document.querySelectorAll(".other-items.percent");
-let numberElem = document.querySelectorAll(".other-items.number ");
+const percentElem = document.querySelectorAll(".other-items.percent");
+const numberElem = document.querySelectorAll(".other-items.number ");
 
-let rollbackInput = document.querySelector(".rollback  input[type='range']");
-let rollbackSpan = document.querySelector(".rollback  span.range-value");
+const rollbackInput = document.querySelector(".rollback  input[type='range']");
+const rollbackSpan = document.querySelector(".rollback  span.range-value");
 
-let priceInput = document.getElementsByClassName("total-input")[0];
-let countScreens = document.getElementsByClassName("total-input")[1];
-let priceServises = document.getElementsByClassName("total-input")[2];
-let fullCount = document.getElementsByClassName("total-input")[3];
-let rollbackCount = document.getElementsByClassName("total-input")[4];
+const priceInput = document.getElementsByClassName("total-input")[0];
+const countScreens = document.getElementsByClassName("total-input")[1];
+const priceServises = document.getElementsByClassName("total-input")[2];
+const fullCount = document.getElementsByClassName("total-input")[3];
+const rollbackCount = document.getElementsByClassName("total-input")[4];
 
 let screenBlocks = document.querySelectorAll("div.screen");
 
