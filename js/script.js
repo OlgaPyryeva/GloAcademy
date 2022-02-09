@@ -1,19 +1,24 @@
 "use strict";
 
-let htmlTitle = document.getElementsByTagName("h1");
-let htmlTitle1 = htmlTitle[0];
-let countBtn = document.getElementsByClassName("handler_btn");
+let htmlTitle = document.getElementsByTagName("h1")[0];
+
+let countBtn = document.getElementsByClassName("handler_btn")[0];
+let resetBtn = document.getElementsByClassName("handler_btn")[1];
+
 let plusBtn = document.querySelector(".screen-btn");
+
 let percentElem = document.querySelectorAll(".other-items.percent");
 let numberElem = document.querySelectorAll(".other-items.number ");
+
 let rollbackInput = document.querySelector(".rollback  input[type='range']");
 let rollbackSpan = document.querySelector(".rollback  span.range-value");
-let totalInputs = document.getElementsByClassName("total-input");
-let totalInputs1 = totalInputs[0];
-let totalInputs2 = totalInputs[1];
-let totalInputs3 = totalInputs[2];
-let totalInputs4 = totalInputs[3];
-let totalInputs5 = totalInputs[4];
+
+let priceInput = document.getElementsByClassName("total-input")[0];
+let countScreens = document.getElementsByClassName("total-input")[1];
+let priceServises = document.getElementsByClassName("total-input")[2];
+let fullCount = document.getElementsByClassName("total-input")[3];
+let rollbackCount = document.getElementsByClassName("total-input")[4];
+
 let screenBlocks = document.querySelectorAll("div.screen");
 
 // const appData = {
