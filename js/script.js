@@ -54,7 +54,6 @@ const appData = {
     this.hideBtn();
     this.removeElement();
     this.cleanFields();
-    this.disableInputs();
   },
 
   cleanFields: function () {
@@ -68,6 +67,24 @@ const appData = {
     checkBox.forEach((items) => {
       items.checked = false;
     });
+
+    const allLeftInputs = document.querySelectorAll(
+      "input[type = 'text'] , select, .screen-btn"
+    );
+    allLeftInputs.forEach((item) => {
+      item.disabled = false;
+    });
+
+    this.screens.length = 0;
+    const screenBlock = document.querySelector(".screen");
+    const select = screenBlock.querySelector("select");
+    select.selectedIndex = 0;
+    const input = screenBlock.querySelector("input");
+    input.value = "";
+
+    this.rollback = 0;
+    rollbackInput.value = 0;
+    rollbackSpan.textContent = 0 + "%";
   },
 
   checkBeforeCount: function () {
@@ -179,7 +196,7 @@ const appData = {
 
   getRollback: function () {
     const changeRollback = (event) => {
-      rollbackSpan.textContent = event.target.value;
+      rollbackSpan.textContent = event.target.value + "%";
       this.rollback = +event.target.value;
     };
     rollbackInput.addEventListener("change", changeRollback);
