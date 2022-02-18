@@ -88,7 +88,7 @@ const appData = {
   },
 
   checkBeforeCount: function () {
-    if (appData.addScreens() !== true) {
+    if (this.addScreens() !== true) {
       this.screens = [];
       alert("не введен тип или кол-во экранов");
     } else {
